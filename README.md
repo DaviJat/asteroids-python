@@ -4,7 +4,7 @@ My first Python version of the game Asteroids for Terminal.
 
 How to run on VS Code:
 
--Install python extension
+- Install python extension
 ![image](https://user-images.githubusercontent.com/91758001/222738956-5b4d2b82-da9c-4125-ab9e-8804bd4f83b0.png)
 
 - Run python file<br />
