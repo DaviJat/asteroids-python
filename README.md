@@ -7,7 +7,7 @@ How to run on VS Code:
 -Install python extension
 ![image](https://user-images.githubusercontent.com/91758001/222738956-5b4d2b82-da9c-4125-ab9e-8804bd4f83b0.png)
 
-- Run python file
+- Run python file<br />
 ![image](https://user-images.githubusercontent.com/91758001/222739227-75cedcbe-48e8-441e-8fb3-ba513facc6e6.png)
 
 - Expand terminal tab for better gameplay
