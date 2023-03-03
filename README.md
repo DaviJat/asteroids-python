@@ -16,4 +16,5 @@ How to run on VS Code:
 
 How to run on cmd:
 
-- Open the folder in the terminal and run the command: ```(python asteroids.py)```
+- Open the folder in the terminal and run the command: 
+```python asteroids.py```
