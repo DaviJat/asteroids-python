@@ -1,6 +1,15 @@
 # Author: Davi Jatobá Galdino
 # Date of conclusion: April 26th 2022
 
+# Autor: Davi Jatobá Galdino
+# Componente Curricular: Algoritmos I
+# Concluido em: 26/04/2021
+# Declaro que este código foi elaborado por mim de forma individual e não contém nenhum
+# trecho de código de outro colega ou de outro autor, tais como provindos de livros e
+# apostilas, e páginas ou documentos eletrônicos da Internet. Qualquer trecho de código
+# de outra autoria que não a minha está destacado com uma citação para o autor e a fonte
+# do código, e estou ciente que estes trechos não serão considerados para fins de avaliação.
+
 
 from random import randint
 from time import sleep
@@ -8,6 +17,7 @@ import keyboard
 import os
 
 # Global Variables
+# Variáveis Globais
 initial_menu = 1
 ship_row = 29
 ship_column = 15
@@ -31,6 +41,7 @@ fifth_place = 'None'
 
 
 # Function to erase inputs that were registered during the game
+# Função para apagar inputs que eram registrados durante o jogo
 def erase_inputs():
     while True:
         for i in range(0,1):
@@ -39,6 +50,7 @@ def erase_inputs():
         break
 
 # Function responsible for showing the content of 'options', and also controlling the commands inside it
+# Função reponsável por mostrar o conteúdo do 'sobre', e também controlar os comandos dentro dele
 def show_options():
     options_menu = 1
     global initial_menu
@@ -78,6 +90,7 @@ in the Earth's ecosystem.''')
             print('Invalid option')
 
 # Function that prints the name of the recordist player, and their respective score
+# Função que printa o nome do jogador dado, e a sua respectiva pontuação
 def show_record():
     global first_score
     global second_score
@@ -104,6 +117,7 @@ def show_record():
     initial_menu = 1
 
 # Function responsible for restarting the asteroid and the projectile when they collide
+# Função responsável por reiniciar o asteroid e o projétil quando entram em colisão
 def to_score():
     global asteroid_column
     global asteroid_row
@@ -118,8 +132,8 @@ def to_score():
     space_key = False
     score += 1
 
-
 # Function that launches the projectile when the 'space' key is pressed
+# Função que adiciona o projétil a quando a tecla 'espaço' é pressionada
 def projectile_generator():
     global space_key
     global projectile_column
@@ -139,6 +153,7 @@ def projectile_generator():
 
 
 # Print the score inside the game matrix
+# Print da pontuação dentro da matriz do jogo
 def matrix_score():
     global score
     global asteroid_counter
@@ -149,6 +164,7 @@ def matrix_score():
 
 
 # End game menu, asks if the user wants to try again, and resets the game data (Score, Asteroid Counter, ...)
+# Menu final de jogo, pergunta se o usuário quer tentar novamente, e reinicia os dados de jogo (Score, Contador de Asteroids, ...)
 def second_try():
     global try_again
     global asteroid_counter
@@ -194,6 +210,7 @@ def second_try():
 
 
 # Print Game Over and the reason
+# Printa GAME OVER e o motivo disso ter acontecido
 def gameover_message():
     global ship_collision
     if ship_collision == 0:
@@ -214,6 +231,7 @@ def gameover_message():
 
 
 # Reset values ​​when 'esc' is pressed to end the game
+# Reinicia os valores quando 'esc' é apertado para finalizar o jogo
 def press_esc():
     global asteroid_counter
     asteroid_counter = 0
@@ -230,6 +248,7 @@ def press_esc():
 
 
 # Function to record the score in descending order and receive the player's nickname
+# Função para registrar o score em ordem decrescente e recever o nick do jogador
 def recordes():
     global first_score
     global second_score
@@ -277,8 +296,8 @@ def recordes():
         fifth_place = input('NEW RECORD - Write your nick (5 characters): ')
         fifth_score = score
 
-
 # Control the ship by the <,> keyboard keys, and reposition it in the matrix
+# Controle da nave pelas teclas <,> do teclado, e a reposiciona na matriz
 def ship_position(column, movement):
     if movement == 'right':
         if column != 23:
@@ -293,8 +312,8 @@ def ship_position(column, movement):
         else:
             return 2
  
-
 # Reset the asteroid when it reaches the last row of the matrix
+# Reset do asteroid quando ele chega na ultima linha da matriz
 def posicao_asteroid(row):
     if row != 29:
         row += 1
@@ -304,6 +323,7 @@ def posicao_asteroid(row):
 
 
 # Print of the ship in the matrix
+# Print da nave na matriz
 def ship_format():
     matrix[ship_row][ship_column - 1] = '/'
     matrix[ship_row][ship_column] = '_'
@@ -313,6 +333,7 @@ def ship_format():
 
 
 # Print of the asteroid in the matrix
+# Print do asteroid na matriz
 def asteroid_format():
     matrix[asteroid_row][asteroid_column + 1] = '/'      
     matrix[asteroid_row][asteroid_column + 2] = '*'     
@@ -339,6 +360,7 @@ def asteroid_format():
 
 
 # Check if the projectile coordinate is the same as the asteroid coordinate, declaring collision
+# Verifica se a coordenada do projétil é a mesma coordenada do asteroid, declarando colisão
 def check_projectile_collision():
     coordenada_projetil = matrix[projectile_row][projectile_column]
     if coordenada_projetil == matrix[asteroid_row + 4][asteroid_column + 1] or \
@@ -357,6 +379,7 @@ def check_projectile_collision():
     
 
 # Check if the ship coordinate is the same as the asteroid coordinate, declaring collision
+# Verifica se a coordenada da nave é a mesma coordenada do asteroid, declarando colisão
 def check_ship_collision():
     if matrix[ship_row][ship_column - 1] == '*' or \
     matrix[ship_row][ship_column] == '*' or \
@@ -368,11 +391,13 @@ def check_ship_collision():
 
     
 # Start of the program's initial menu, through a while loop
+# Início do menu inicial do programa, através de um loop While
 while initial_menu == 1:
     os.system('cls')
     print('==== ASTEROIDS ====\n\n    1 - Play\n    2 - Record\n    3 - About\n    4 - Exit')
     initial_menu = input('\nYour option: ').strip()
     # Ship collision = variable to identify if the ship was hit
+    # Colisão nave = variável para identificar se a nave foi atingida
     ship_collision = 1
     asteroid_counter = 0
     if initial_menu == '1':
@@ -387,16 +412,21 @@ while initial_menu == 1:
                         linha.append(' ')
                     matrix.append(linha)
                 # Ship generator
+                # Gerador Nave
                 ship_format()
                 # Ateroid generator
+                # Gerador Asteroid
                 asteroid_format()
                 # Projectile generator
+                # Gerador Projetil
                 projectile_generator()
                 matrix_score()
                 # Matrix print
+                # Print da matriz
                 for l in matrix:
                     print(''.join(l))
                 # Receives commands and performs the respective functions
+                # Recebe os comando e realiza as funções respectivas
                 if keyboard.is_pressed('esc'):
                     press_esc()
                     break
@@ -424,6 +454,7 @@ while initial_menu == 1:
             recordes()
             second_try()
     # Other main menu options
+    # Outras opções do menu principal
     elif initial_menu == '2':
         show_record()
     elif initial_menu == '3':
